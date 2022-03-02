@@ -1,63 +1,46 @@
-# CodeIgniter 4 Application Starter
+# FaleMais-dev
 
-## What is CodeIgniter?
+## Requisitos
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](http://codeigniter.com).
+Para executar o projeto, será necessário instalar os seguintes programas:
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+XAMPP (Apache + MariaDB + PHP) baixado em https://www.apachefriends.org/index.html que vem com Servidor Web Apache/2.4.52 (Win64), OpenSSL/1.1.1m, PHP/7.4.27 e Banco de Dados na Versão 10.4.22-MariaDB
 
-More information about the plans for version 4 can be found in [the announcement](http://forum.codeigniter.com/thread-62615.html) on the forums.
+Eclipse: Para desenvolvimento do projeto (Opcional)
 
-The user guide corresponding to this version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/).
+DBeaver: Para desenvolvimento e administração de banco de dados (Opcional)
 
-## Installation & updates
+## Obtendo o Projeto
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+O projeto foi desenvolvido com o framewordk PHP Codeigniter 4
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+Para obter o projeto, é necessário clonar o projeto do GitHub num diretório de sua preferência:
+https://github.com/RRafael/FaleMais-dev.git
 
-## Setup
+## Construção do projeto e disponibilização para uso
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+Importe o banco de dados contido no arquivo falemais.sql localizado no diretório principal (raiz do projeto) em que contem os scripts sql necessários para construir a base de dados do projeto
 
-## Important Change with index.php
+A configuração para conectar-se com o banco de dados está contido no arquivo .env localizado no diretório principal (raiz do projeto) em que o nome do banco de dados é telzir com o usuário root e sem senha utilizando o drive MySQLi para conexão com o SGBD
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+database.default.hostname = localhost
+database.default.database = telzir
+database.default.username = root
+database.default.password = 
+database.default.DBDriver = MySQLi
+database.default.DBPrefix = 
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+O CodeIgniter 4 vem com um servidor de desenvolvimento local e integrado. Você pode iniciá-lo com a seguinte linha de comando no diretório principal (raiz do projeto):
 
-**Please** read the user guide for a better explanation of how CI4 works!
+php spark serve 
 
-## Repository Management
+O comando acima irá iniciar o servidor e agora você poderá visualizar o aplicativo em seu navegador em http://localhost:8080
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+## Testes
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+Foi utilizado o PHPUnit, que já vem com o Codeigniter, para os testes
+Os tetes unitarios podem ser obtidos executando o seguinte comando no diretório principal (raiz do projeto)
 
-## Server Requirements
+ .\vendor\bin\phpunit tests/app/TestHomeTest.php
 
-PHP version 7.3 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
-- xml (enabled by default - don't turn it off)
+Serão executados 3 testes. Um que verifica se o controlador esta respondendo corretamente. O outro verifica se o tipo de dado de retorno é no formato json e o último verifica se o código de retorno HTTP é 200
