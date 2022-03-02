@@ -19,7 +19,7 @@ https://github.com/RRafael/FaleMais-dev.git
 
 ## Construção do projeto e disponibilização para uso
 
-Importe o banco de dados contido no arquivo falemais.sql localizado no diretório principal (raiz do projeto) em que contem os scripts sql necessários para construir a base de dados do projeto
+Execute os scripts SQL contido no arquivo falemais.sql localizado no diretório principal (raiz do projeto) que contem os scripts sql necessários para construir a base de dados do projeto
 
 A configuração para conectar-se com o banco de dados está contido no arquivo .env localizado no diretório principal (raiz do projeto) em que o nome do banco de dados é telzir com o usuário root e sem senha utilizando o drive MySQLi para conexão com o SGBD
 
